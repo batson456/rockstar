@@ -17,7 +17,7 @@
 module Rockstar
   class Album < Base
     attr_accessor :artist, :artist_mbid, :name, :mbid, :playcount, :rank, :url, :release_date
-    attr_accessor :image_large, :image_medium, :image_small, :summary, :content, :images
+    attr_accessor :image_large, :image_medium, :image_small, :summary, :content, :images, :tracks
 
     # needed on top albums for tag
     attr_accessor :count, :streamable
@@ -81,6 +81,11 @@ module Rockstar
         self.images[image['size']] = image.inner_html if self.images[image['size']].nil?
       }
 
+      self.tracks = {}
+      (xml/'tracks').each {|track|
+        self.track[track['number']] = track.inner_html if self.tracks[image['number']].nil?
+      }
+      
       self.image_large    = images['large']
       self.image_medium   = images['medium']
       self.image_small    = images['small']
