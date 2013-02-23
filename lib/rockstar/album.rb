@@ -83,9 +83,9 @@ module Rockstar
 
       self.tracks = {}
       (xml/'tracks').each {|track|
-        self.track[track['number']] = track.inner_html if self.tracks[image['number']].nil?
+        self.tracks[track['rank']] = track.inner_html if self.tracks[image['number']].nil?
       }
-      
+
       self.image_large    = images['large']
       self.image_medium   = images['medium']
       self.image_small    = images['small']
