@@ -82,7 +82,7 @@ module Rockstar
       }
 
       self.tracks = {}
-      (xml/'tracks').each {|track|
+      (xml/'track').each {|track|
         self.tracks[track['rank']] = track.inner_html if self.tracks[image['number']].nil?
       }
 
